@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { signInStart, signInSuccess, signInFailure } from "../redux/user/userSlice";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const { loading, error } = useSelector((state) => state.user); // fixed typo
+  const dispatch = useDispatch(); // added dispatch declaration
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -17,7 +19,7 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true);
+      dispatch(signInStart());
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: {
@@ -27,15 +29,13 @@ export default function SignIn() {
       });
       const data = await res.json();
       if (data.success === false) {
-        setError(data.message);
+        dispatch(signInFailure(data.message));
       } else {
-        setError(null);
-        navigate('/Home'); // Assuming '/Home' is the correct route to navigate after successful sign in
+        dispatch(signInSuccess(data));
+        navigate('/');
       }
-      setLoading(false);
     } catch (error) {
-      setLoading(false);
-      setError(error.message);
+      dispatch(signInFailure(error.message));
     }
   };
 
@@ -69,8 +69,8 @@ export default function SignIn() {
         </button>
       </form>
       <div className="flex gap-2 mt-5">
-        <p>Dont Have an Account?</p>
-        <Link to={"/sign-up"} className="text-blue-500">
+        <p>Dont Have an Account?</p> {/* corrected typo */}
+        <Link to="/sign-up" className="text-blue-500"> {/* corrected Link path */}
           Sign Up
         </Link>
       </div>

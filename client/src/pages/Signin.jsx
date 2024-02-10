@@ -51,20 +51,21 @@ export default function SignIn() {
         <input
           type="text"
           placeholder="Email"
-          className="border p-3 rounded-lg"
+          className="border p-3 shadow-xl rounded-lg"
           id="email"
           onChange={handleChange}
         />
         <input
           type="password"
           placeholder="Password"
-          className="border p-3 rounded-lg"
+          className="border p-3 shadow-xl rounded-lg"
           id="password"
           onChange={handleChange}
         />
         <button
           disabled={loading}
-          className="bg-blue-400 text-white p-3 rounded-lg uppercase hover:opacity-90 disabled:opacity-80"
+          className="bg-blue-400 text-white p-3 
+          shadow-xl rounded-lg uppercase hover:bg-blue-500 disabled:opacity-80"
         >
           {loading ? 'Loading...' : 'Sign In'}
         </button>

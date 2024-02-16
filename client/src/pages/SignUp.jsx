@@ -43,6 +43,11 @@ export default function SignUp() {
     e.preventDefault();
     try {
       setLoading(true);
+      if (formData.password !== formData.confirmPassword) {
+        setError("Password and confirm password do not match");
+        setLoading(false);
+        return;
+      }
 
       const res = await fetch("/api/auth/signup", {
         method: "POST",

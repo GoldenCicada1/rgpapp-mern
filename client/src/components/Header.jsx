@@ -9,7 +9,7 @@ export default function Header() {
     <header className="bg-blue-100 shadow-md">
     <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
         <Link to="/">
-        <img src='https://github.com/GoldenCicada1/rgpapp-react/blob/main/public/logo-blue.png?raw=true'
+        <img src='https://firebasestorage.googleapis.com/v0/b/rgpapp-mern.appspot.com/o/Official%20Logo2.png?alt=media&token=7cb15219-59ce-43a8-b926-6cd35cc0dfe3'
         alt='logo'
         className='h-5 sm:h-7 cursor-pointer' />
         </Link>

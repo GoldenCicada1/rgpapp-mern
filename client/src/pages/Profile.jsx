@@ -1,13 +1,28 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useRef, useState, useEffect } from "react";
-import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
 import { app } from "../firebase";
-import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserFailure, deleteUserStart, deleteUserSuccess, signOutUserStart, signOutUserFailure, signOutUserSuccess } from "../redux/user/userSlice";
+import {
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure,
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  signOutUserStart,
+  signOutUserFailure,
+  signOutUserSuccess,
+} from "../redux/user/userSlice";
 
 export default function Profile() {
-  const fileRef = useRef(null)
-  const { currentUser, loading, error } = useSelector(state => state.user)
-  const [file, setFile] = useState(undefined)
+  const fileRef = useRef(null);
+  const { currentUser, loading, error } = useSelector((state) => state.user);
+  const [file, setFile] = useState(undefined);
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
@@ -26,19 +41,20 @@ export default function Profile() {
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
-    uploadTask.on('state_changed',
+    uploadTask.on(
+      "state_changed",
       (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setFilePerc(Math.round(progress));
       },
-      (error) => {
+      () => {
         setFileUploadError(true);
       },
       () => {
-        getDownloadURL(uploadTask.snapshot.ref)
-          .then((downloadURL) => {
-            setFormData({ ...formData, avatar: downloadURL });
-          });
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setFormData({ ...formData, avatar: downloadURL });
+        });
       }
     );
   };
@@ -51,10 +67,11 @@ export default function Profile() {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`/api/user/update/${currentUser._id}`, { // Use backticks for string interpolation
-        method: 'POST',
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+        // Use backticks for string interpolation
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -66,15 +83,15 @@ export default function Profile() {
       dispatch(updateUserSuccess(data));
       setUpdateSuccess(true);
     } catch (error) {
-      dispatch(updateUserFailure(error.message))
+      dispatch(updateUserFailure(error.message));
     }
-  }
+  };
 
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
       const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
       const data = await res.json();
       if (data.success === false) {
@@ -82,89 +99,110 @@ export default function Profile() {
         return;
       }
       dispatch(deleteUserSuccess(data));
-
     } catch (error) {
-      dispatch(deleteUserFailure(error.message))
+      dispatch(deleteUserFailure(error.message));
     }
   };
 
   const handleSignOut = async () => {
-try {
-  dispatch(signOutUserStart())
-  const res = await fetch('/api/auth/signout');
-  const data = await res.json();
-  if (data.success === false) {
-    dispatch(signOutUserFailure(data.message));
-    return;
-  }
-  dispatch(signOutUserSuccess(data.message));
-} catch (error) {
-  dispatch(signOutUserFailure(error.message));
-}
+    try {
+      dispatch(signOutUserStart());
+      const res = await fetch("/api/auth/signout");
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(signOutUserFailure(data.message));
+        return;
+      }
+      dispatch(signOutUserSuccess(data.message));
+    } catch (error) {
+      dispatch(signOutUserFailure(error.message));
+    }
   };
 
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7">
-        Profile
-      </h1>
+      <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input onChange={(e) => setFile(e.target.files[0])}
+        <input
+          onChange={(e) => setFile(e.target.files[0])}
           type="file"
-          ref={fileRef} hidden
+          ref={fileRef}
+          hidden
           accept="image/*"
         />
-        <img onClick={() => fileRef.current.click()}
+        <img
+          onClick={() => fileRef.current.click()}
           className="rounded-full h-24 w-24 object-cover cursor-pointer self-center shadow-xl mt-2"
-          src={formData.avatar || currentUser.avatar} alt="profile" />
+          src={formData.avatar || currentUser.avatar}
+          alt="profile"
+        />
 
         <p className="text-sm self-center">
           {fileUploadError ? (
-            <span className="text-red-600">Error Image Upload <br /> Image must be Less than 2mb </span>
+            <span className="text-red-600">
+              Error Image Upload <br /> Image must be Less than 2mb{" "}
+            </span>
           ) : filePerc > 0 && filePerc < 100 ? (
-            <span className="text-blue-500">{'Uploading ' + filePerc + '%'}</span>
+            <span className="text-blue-500">
+              {"Uploading " + filePerc + "%"}
+            </span>
           ) : filePerc === 100 ? (
             <span className="text-green-500">Image Successfully Uploaded</span>
           ) : (
-            ''
+            ""
           )}
         </p>
 
-        <input type="text" placeholder="Username"
+        <input
+          type="text"
+          placeholder="Username"
           defaultValue={currentUser.username}
           id="username"
           onChange={handleChange}
-          className="border p-3 rounded-lg shadow-xl" />
-        <input type="text" placeholder="Email"
+          className="border p-3 rounded-lg shadow-xl"
+        />
+        <input
+          type="text"
+          placeholder="Email"
           defaultValue={currentUser.email}
           id="email"
           onChange={handleChange}
-          className="border p-3 rounded-lg shadow-xl" />
-        <input type="password" placeholder="Password"
+          className="border p-3 rounded-lg shadow-xl"
+        />
+        <input
+          type="password"
+          placeholder="Password"
           id="password"
           onChange={handleChange}
-          className="border p-3 rounded-lg shadow-xl" />
+          className="border p-3 rounded-lg shadow-xl"
+        />
 
-        <button disabled={loading} 
-        className="bg-blue-400 text-white p-3 rounded-lg uppercase hover:bg-blue-500 disabled:opacity-80 shadow-xl">
-          {loading ? 'Updating...' : 'Update'}
+        <button
+          disabled={loading}
+          className="bg-blue-400 text-white p-3 rounded-lg uppercase hover:bg-blue-500 disabled:opacity-80 shadow-xl"
+        >
+          {loading ? "Updating..." : "Update"}
         </button>
       </form>
       <div className="flex justify-between mt-5">
-        <span 
-        onClick={handleDeleteUser}
-        className="text-red-600 font-bold cursor-pointer">
+        <span
+          onClick={handleDeleteUser}
+          className="text-red-600 font-bold cursor-pointer"
+        >
           Delete Account
         </span>
-        <span 
-        onClick={handleSignOut}
-        className="text-red-600 font-bold cursor-pointer">
+        <span
+          onClick={handleSignOut}
+          className="text-red-600 font-bold cursor-pointer"
+        >
           Sign Out
         </span>
       </div>
 
-      <p className="text-red-700 mt-5">{error ? error : ''}</p>
-      <p className="text-green-500 mt-5">{updateSuccess ? 'User is updated successfully' : ''}</p>
+      <p className="text-red-700 mt-5">{error ? error : ""}</p>
+      <p className="text-green-500 mt-5">
+        {updateSuccess ? "User is updated successfully" : ""}
+      </p>
     </div>
-  )
+  );
 }

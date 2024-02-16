@@ -36,9 +36,19 @@ export default function OAuth() {
   };
 
   return (
-    <button onClick={handleGoogleClick} type='button' className='bg-red-600 text-white p-3
-    shadow-xl rounded-lg uppercase hover:bg-red-700'>
-      Continue with Google
+    <button onClick={handleGoogleClick}
+     type="submit"
+                className="w-full inline-flex items-center justify-center 
+                    gap-4 px-6 py-2.5 font-medium border border-gray-300 bg-white text-dark 
+                    hover:bg-blue-100 disabled:opacity-80
+                    rounded-md transition-all duration-500 group shadow-xl"
+              >
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/rgpapp-mern.appspot.com/o/google.png?alt=media&token=eaccfd86-a783-4c8d-a89a-fee9ba5307d6"
+                  alt="googleLogo"
+                  className="w-5 h-5 text-dark"
+                />
+       Google
     </button>
   );
 }

@@ -1,10 +1,10 @@
 import express from 'express';
-import { createProduct } from '../controllers/product.controller.js';
+import { createBuilding } from '../controllers/building.controller.js';
 import { verifyToken } from '../utils/verifyUser.js';
 
 const router = express.Router();
 
-router.post('/create', verifyToken, createProduct)
+router.post('/create', verifyToken, createBuilding)
 
 
 

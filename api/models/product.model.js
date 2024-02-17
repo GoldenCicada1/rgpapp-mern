@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const listingSchema = new mongoose.Schema(
+const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -9,15 +9,15 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    address: {
-      type: String,
-      required: true,
-    },
     regularPrice: {
       type: Number,
       required: true,
     },
     discountPrice: {
+      type: Number,
+      required: true,
+    },
+    size: {
       type: Number,
       required: true,
     },
@@ -45,11 +45,29 @@ const listingSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
-    imageUrls: {
-      type: Array,
+    active: {
+      type: Boolean,
       required: true,
     },
-    userRef: {
+
+    // Foreign key references
+    locationid: {
+      type: String,
+      required: true,
+    },
+    buildingid: {
+      type: String,
+      required: true,
+    },
+    landid: {
+      type: String,
+      required: true,
+    },
+    adminid: {
+      type: String,
+      required: true,
+    },
+    ownerid: {
       type: String,
       required: true,
     },
@@ -57,5 +75,5 @@ const listingSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Listing = mongoose.model("Listing", listingSchema);
-export default Listing;
+const Product = mongoose.model("Product", productSchema);
+export default Product;

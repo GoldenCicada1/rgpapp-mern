@@ -96,7 +96,7 @@ export default function SignIn() {
       <div className="grid xl:grid-cols-2 grid-cols-1 h-full">
         <div className="max-w-lg mx-auto w-full flex flex-col justify-center md:items-start items-center p-6">
           <div className="self-center md:text-start text-center mb-7">
-            <a href="index.html" className="block mb-3">
+            <a href="/" className="block mb-3">
               <img
                 className="h-8 mx-auto"
                 src="https://firebasestorage.googleapis.com/v0/b/rgpapp-mern.appspot.com/o/Official%20Logo2.png?alt=media&token=7cb15219-59ce-43a8-b926-6cd35cc0dfe3"
@@ -287,9 +287,9 @@ export default function SignIn() {
           </form>
         </div>
 
-        <div className="hidden xl:block">
+        <div className="fixed hidden xl:block w-1/2 h-screen right-0">
           <div
-            className="relative w-full h-screen"
+            className="relative w-full h-screen bg-cover bg-center"
             style={{
               backgroundImage:
                 "url(https://firebasestorage.googleapis.com/v0/b/rgpapp-mern.appspot.com/o/webauthasse2t.jpg?alt=media&token=cc4d5c22-50d4-4052-a17e-6ee3c1c20e93)",

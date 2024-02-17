@@ -51,10 +51,7 @@ const productSchema = new mongoose.Schema(
     },
 
     // Foreign key references
-    location_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Location",
-    },
+    
     buildingid: {
       type: String,
       required: true,

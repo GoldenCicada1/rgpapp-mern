@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
-const floorSchema = new mongoose.Schema({
-  floor_number: {
-    type: Number,
-    required: true,
-  },
+const unitSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -16,6 +12,21 @@ const floorSchema = new mongoose.Schema({
   number_of_bedrooms: {
     type: Number,
     required: true,
+  },
+});
+
+const floorSchema = new mongoose.Schema({
+  floor_number: {
+    type: Number,
+    required: true,
+  },
+  number_of_units: {
+    type: Number,
+    required: true,
+  },
+  units: {
+    type: [unitSchema],
+    default: [],
   },
 });
 

@@ -33,6 +33,7 @@ app.listen(3000, () => {
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
+app.use("/api/product", productRouter);
 app.use("/api/location", locationRouter);
 app.use("/api/land", landRouter);
 app.use("/api/building", buildingRouter);

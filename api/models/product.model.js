@@ -21,14 +21,6 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    bathroom: {
-      type: Number,
-      required: true,
-    },
-    bedroom: {
-      type: Number,
-      required: true,
-    },
     furnished: {
       type: Boolean,
       required: true,
@@ -37,10 +29,31 @@ const productSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    category: {
+      type: String,
+      required: true,
+      enum: [
+        "Residential",
+        "Commercial",
+        "Industrial",
+        "Agricultural",
+        "Special Purpose",
+        "Mixed-Use",
+        "Vacant Land",
+      ],
+    },
     type: {
       type: String,
       required: true,
     },
+    productype: {
+      type: String,
+      required: true,
+      enum: ["land", "building"],
+    },
+
+    // Conditional fields based on type
+
     offer: {
       type: Boolean,
       required: true,
@@ -50,16 +63,24 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
 
-    // Foreign key references
     
-    buildingid: {
-      type: String,
-      required: true,
+    // Foreign key references
+    land_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Land",
+      required: function () {
+        return this.type === "land";
+      },
     },
-    landid: {
-      type: String,
-      required: true,
+
+    building_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Building",
+      required: function () {
+        return this.type === "building";
+      },
     },
+
     adminid: {
       type: String,
       required: true,

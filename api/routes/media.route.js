@@ -1,10 +1,10 @@
 import express from 'express';
-import { createProduct } from '../controllers/product.controller.js';
+import { createMedia } from '../controllers/media.controller.js';
 import { verifyToken } from '../utils/verifyUser.js';
 
 const router = express.Router();
 
-router.post('/create', verifyToken, createProduct)
+router.post('/create', verifyToken, createMedia)
 
 
 

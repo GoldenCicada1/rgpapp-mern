@@ -29,6 +29,10 @@ const productSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    type: {
+      type: String,
+      required: true,
+    },
     category: {
       type: String,
       required: true,
@@ -41,10 +45,6 @@ const productSchema = new mongoose.Schema(
         "Mixed-Use",
         "Vacant Land",
       ],
-    },
-    type: {
-      type: String,
-      required: true,
     },
     productype: {
       type: String,
@@ -80,7 +80,10 @@ const productSchema = new mongoose.Schema(
         return this.type === "building";
       },
     },
-
+    media_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Media",
+    },
     adminid: {
       type: String,
       required: true,

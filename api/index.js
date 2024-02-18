@@ -5,6 +5,7 @@ import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import productRouter from "./routes/product.route.js";
+import mediaRouter from "./routes/media.route.js";
 import locationRouter from "./routes/location.route.js";
 import landRouter from "./routes/land.route.js";
 import buildingRouter from "./routes/building.route.js";
@@ -33,7 +34,7 @@ app.listen(3000, () => {
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
-app.use("/api/product", productRouter);
+app.use("/api/media", mediaRouter);
 app.use("/api/location", locationRouter);
 app.use("/api/land", landRouter);
 app.use("/api/building", buildingRouter);

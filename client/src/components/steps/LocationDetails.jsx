@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { StepperContext } from "../../contexts/StepperContext";
 
-
 export default function LocationDetails() {
   const { userData, setUserData } = useContext(StepperContext);
   const handleChange = (e) => {

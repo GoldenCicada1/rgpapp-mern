@@ -47,8 +47,13 @@ export default function CreateProduct() {
 
   return (
     <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl pb-2 bg-white">
+    <div>
+      <h1 className="flex flex-col flex-wrap text-center text-3xl font-bold text-blue-600 mt-5 p-10">
+        Product Creation System
+      </h1>
+    </div>
       {/* Stepper */}
-      <div className="container horizontal mt-5">
+      <div className="container horizontal ">
         <Stepper 
           steps={steps} 
           currentStep={currentStep} 
@@ -68,11 +73,12 @@ export default function CreateProduct() {
       </div>
       
       {/* Navigation Controls*/}
+      {currentStep !== steps.length && 
       <StepperControl
         handleClick={handleClick}
         currentStep={currentStep}
         steps={steps}
-      />
+      />}
     </div>
   );
 }

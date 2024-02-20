@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   getDownloadURL,
   getStorage,
@@ -184,6 +185,14 @@ export default function Profile() {
           {loading ? "Updating..." : "Update"}
         </button>
       </form>
+      <div className="flex justify-between mt-5  ">
+        <Link
+          className="bg-green-400 text-white p-3 text-center rounded-lg uppercase hover:bg-green-500 disabled:opacity-80 shadow-xl"
+          to={"/create-product"}
+        >
+          create Product
+        </Link>
+      </div>
       <div className="flex justify-between mt-5">
         <span
           onClick={handleDeleteUser}

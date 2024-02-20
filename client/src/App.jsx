@@ -8,12 +8,17 @@ import Profile from "./pages/Profile";
 import Header from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import Terms_Conditions from "./pages/Terms_Conditions";
+import CreateProduct from "./pages/CreateProduct";
+
+
 
 // Layout component without the header
 const AuthLayout = ({ children }) => <>{children}</>;
 AuthLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+
 
 export default function App() {
   return (
@@ -53,6 +58,15 @@ export default function App() {
               <>
                 <Header />
                 <Profile />
+              </>
+            }
+          />
+          <Route
+            path="/create-product"
+            element={
+              <>
+                <Header />
+                <CreateProduct />
               </>
             }
           />

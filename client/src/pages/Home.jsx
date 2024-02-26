@@ -6,10 +6,7 @@ export default function Home() {
       <div className="w-80 h-144  border rounded-lg overflow-hidden bg-slate-100">
         <Videos />
       </div>
-      <div className="w-80 h-144  border rounded-lg overflow-hidden bg-slate-100">
-        <Videos />
-      </div>
-
+      
       {/* app goes here */}
       {/* feed */}
       {/* widgets */}

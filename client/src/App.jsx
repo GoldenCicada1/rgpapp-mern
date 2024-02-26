@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import Terms_Conditions from "./pages/Terms_Conditions";
 import CreateProduct from "./pages/CreateProduct";
+import Videos from "./pages/Videos";
 
 
 
@@ -67,6 +68,15 @@ export default function App() {
               <>
                 <Header />
                 <CreateProduct />
+              </>
+            }
+          />
+          <Route
+            path="/videos"
+            element={
+              <>
+                <Header />
+                <Videos />
               </>
             }
           />

@@ -5,6 +5,7 @@ import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import adminRouter from "./routes/admin.route.js";
+import agentRouter from "./routes/agent.route.js";
 import productRouter from "./routes/product.route.js";
 import mediaRouter from "./routes/media.route.js";
 import locationRouter from "./routes/location.route.js";
@@ -48,6 +49,7 @@ app.use("/api/company", companyRouter);
 app.use("/api/landOwnership", landOwnershipRouter);
 app.use("/api/buildingOwnership", buildingOwnershipRouter);
 app.use("/api/admin", adminRouter);
+app.use("/api/agent", agentRouter);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

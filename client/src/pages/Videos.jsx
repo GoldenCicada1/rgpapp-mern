@@ -44,6 +44,7 @@ export default function Videos() {
             videoLoaded ? "" : "hidden"
           }`}
           loop
+          muted         
           ref={videoRef}
           playsInline
           src="https://firebasestorage.googleapis.com/v0/b/rgpapp-mern.appspot.com/o/6.mp4?alt=media&token=a12dde1e-e55f-4140-b207-015042e4eef8"
@@ -60,13 +61,17 @@ export default function Videos() {
           className="w-full inline-flex items-center shadow-xl
                     justify-center px-1  bg-blue-500 font-bold 
                     hover:bg-blue-700 disabled:opacity-80
-                    text-base text-white rounded-md transition-all duration-500"
+                    text-base text-white rounded-md transition-all 
+                    duration-500 cursor-pointer hover:scale-110"
         >
           <ReadMoreIcon sx={{ fontSize: 35 }} />
         </button>
       </div>
       <div className="absolute top-0 right-0 p-2">
-        <h1 className="flex items-center bg-blue-500 text-white font-bold px-2 py-1 rounded-md shadow-xl">
+        <h1 className="flex items-center bg-blue-500
+        cursor-pointer
+        hover:scale-105
+         text-white font-bold px-2 py-1 rounded-md shadow-xl">
           <span className="mr-1 text-center">
             100,000
             <div className="flex flex-col text-xs text-center">
@@ -83,12 +88,14 @@ export default function Videos() {
             className="w-full inline-flex items-center shadow-xl
                     justify-center px-4 py-1 mb-1.5 bg-blue-500 font-bold 
                     hover:bg-blue-700 disabled:opacity-80
-                    text-base text-white rounded-md transition-all duration-500"
+                    text-base text-white rounded-md transition-all duration-500
+                    cursor-pointer hover:scale-110"
           >
             RENT
           </button>
         </div>
-        <div className="text-center text-xs items-center text-white justify-center">
+        <div className="text-center text-xs items-center
+        cursor-pointer hover:text-blue-700 hover:font-semibold text-white justify-center">
           <p>
             2,000
             <VisibilityIcon sx={{ fontSize: 16, marginLeft: "0.5rem" }} />

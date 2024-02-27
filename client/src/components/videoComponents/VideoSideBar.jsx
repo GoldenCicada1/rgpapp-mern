@@ -17,38 +17,104 @@ export default function VideoSideBar() {
   return (
     <div className="flex text-white right-0 flex-col items-end font-semibold ">
       <div className="mt-16 mr-2 ">
-        <div className="mb-2 flex flex-col items-end  ">
-          <span className=" text-xs ">
-            <SquareFootIcon />m<sup>2</sup>
+        <div className="mb-2 flex flex-col items-end 
+        hover:text-blue-700
+        transition duration-300 ease-in-out
+        transform cursor-pointer">
+          <span className=" text-xs 
+          hover:text-xl
+          ">
+            <SquareFootIcon sx={{
+                fontSize: 20,
+                transition: "font-size 0.3s",
+                "&:hover": { fontSize: 38 }
+              }} />m<sup>2</sup>
           </span>
           <span className=" text-xs">5,000</span>
         </div>
-        <div className="mb-2 flex flex-col items-end">
-          <HotelIcon />
-          <span className="ml-4 text-xl">
+        <div className="mb-2 flex flex-col items-end
+        hover:text-blue-700
+        transition duration-300 ease-in-out
+        transform cursor-pointer">
+          <HotelIcon sx={{
+                fontSize: 20,
+                transition: "font-size 0.3s",
+                "&:hover": { fontSize: 38 }
+              }}/>
+          <span className="ml-4 text-xl
+          hover:text-xl
+          ">
             2<sup className="text-xs">Bed</sup>
           </span>
         </div>
-        <div className="mb-5 flex flex-col items-end">
-          <BathtubIcon />
-          <span className="ml-4 text-xl">
+        <div className="mb-5 flex flex-col items-end
+        hover:text-blue-700
+        transition duration-300 ease-in-out
+        transform cursor-pointer ">
+          <BathtubIcon sx={{
+                fontSize: 20,
+                transition: "font-size 0.3s",
+                "&:hover": { fontSize: 38 }
+              }} />
+          <span className="ml-4 text-xl hover:text-xl">
             3<sup className="text-xs">Bath</sup>
           </span>
         </div>
       </div>
-      <div className="mt-16 mr-2">
-        <div className="flex" onClick={handleClick}>
+      <div className="mt-16 mr-3">
+        <div
+          className="
+        hover:text-blue-700
+        transition duration-300 ease-in-out
+        transform cursor-pointer"
+          onClick={handleClick}
+        >
           {liked ? (
-            <FavoriteIcon sx={{ fontSize: 35 }} style={{ color: "red" }} />
+            <FavoriteIcon
+              sx={{
+                fontSize: 35,
+                transition: "font-size 0.3s",
+                "&:hover": { fontSize: 38 }
+              }}
+              style={{ color: "red" }}
+            />
           ) : (
-            <FavoriteBorderOutlinedIcon sx={{ fontSize: 35 }} />
+            <FavoriteBorderOutlinedIcon
+              sx={{
+                fontSize: 35,
+                transition: "font-size 0.3s",
+                "&:hover": { fontSize: 38 }
+              }}
+            />
           )}
         </div>
-        <div className="flex flex-col items-end mt-4">
-          <ShareIcon sx={{ fontSize: 35 }} />
+        <div
+          className="mt-4 
+        hover:text-blue-700
+        transition duration-300 ease-in-out
+        transform cursor-pointer"
+        >
+          <ShareIcon
+            sx={{
+              fontSize: 35,
+              transition: "font-size 0.3s",
+              "&:hover": { fontSize: 38 }
+            }}
+          />
         </div>
-        <div className="flex flex-col items-end mt-4">
-          <CompareArrowsIcon sx={{ fontSize: 35 }} />
+        <div
+          className="mt-4
+        hover:text-blue-700
+        transition duration-300 ease-in-out
+        transform cursor-pointer"
+        >
+          <CompareArrowsIcon
+            sx={{
+              fontSize: 35,
+              transition: "font-size 0.3s",
+              "&:hover": { fontSize: 38 },
+            }}
+          />
         </div>
       </div>
     </div>

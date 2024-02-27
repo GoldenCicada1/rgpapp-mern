@@ -12,13 +12,20 @@ export default function VideoFooter() {
   const [isMoreInfoVisible, setIsMoreInfoVisible] = useState(false);
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 p-2  text-white">
+    <div className="absolute bottom-0 left-0 right-0 p-2 cursor-pointer  text-white">
       <div className="flex items-center">
         <Badge
           overlap="circular"
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           badgeContent={
-            <VerifiedOutlinedIcon sx={{ color: "green", fontSize: 20 }} />
+            <VerifiedOutlinedIcon
+              sx={{
+                color: "green",
+                fontSize: 20,
+                transition: "font-size 0.3s",
+                "&:hover": { fontSize: 22 },
+              }}
+            />
           }
         >
           <Avatar
@@ -27,13 +34,28 @@ export default function VideoFooter() {
               width: 40,
               height: 40,
               objectFit: "cover",
+              transition: "font-size 0.3s",
+              "&:hover": { width: 42, height: 42 },
               boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
             }}
           />
         </Badge>
-        <div className="ml-2">
-          <h1 className="font-bold text-xs ">National Housing Corporation</h1>
-          <p className="text-xs">Government Entity</p>
+        <div className="ml-2 ">
+          <h1
+            className="font-bold text-xs
+          hover:text-blue-700 hover:font-bold
+          hover:scale-105
+          "
+          >
+            National Housing Corporation
+          </h1>
+          <p
+            className="text-xs
+          hover:text-blue-700 hover:font-bold
+          hover:scale-105"
+          >
+            Government Entity
+          </p>
           <div className="flex items-center">
             <StarIcon sx={{ fontSize: 16 }} />
             <StarIcon sx={{ fontSize: 16 }} />
@@ -44,16 +66,24 @@ export default function VideoFooter() {
         </div>
       </div>
 
-      <div className="flex items-center text-xs  ml-2">
+      <div
+        className="flex items-center text-xs cursor-pointer
+        hover:font-bold  ml-2"
+      >
         <PinDropIcon sx={{ fontSize: 16 }} />
-        <p className="mr-2">Kunduchi, Dar es salaam</p>
+        <p
+          className="mr-2 
+        "
+        >
+          Kunduchi, Dar es salaam
+        </p>
         <div>
           <MoreHorizIcon
             sx={{ fontSize: 25 }}
             onClick={() => setIsMoreInfoVisible(!isMoreInfoVisible)}
-            className={`cursor-pointer ml-auto ${
-              isMoreInfoVisible ? "rotate-180" : ""
-            }`}
+            className={`cursor-pointer ml-auto hover:scale-110 
+            hover:text-blue-700
+            ${isMoreInfoVisible ? "rotate-180" : ""}`}
           />
         </div>
       </div>

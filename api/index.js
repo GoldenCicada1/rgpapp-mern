@@ -10,6 +10,7 @@ import locationRouter from "./routes/location.route.js";
 import landRouter from "./routes/land.route.js";
 import buildingRouter from "./routes/building.route.js";
 import ownerRouter from "./routes/owner.route.js";
+import companyRouter from "./routes/company.route.js";
 
 dotenv.config();
 
@@ -40,6 +41,7 @@ app.use("/api/owner", ownerRouter);
 app.use("/api/location", locationRouter);
 app.use("/api/land", landRouter);
 app.use("/api/building", buildingRouter);
+app.use("/api/company", companyRouter);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

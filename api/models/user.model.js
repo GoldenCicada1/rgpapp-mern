@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    email: {
+    email: {  
       type: String,
       required: true,
       unique: true,
@@ -20,6 +20,15 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
       type: String,
+    },
+    isCompany: {
+      type: Boolean,
+      default: false,
+    },
+    role: {
+      type: String,
+      enum: ['user', 'owner', 'agent'], // Add other roles as needed
+      default: 'user',
     },
     avatar: {
       type: String,

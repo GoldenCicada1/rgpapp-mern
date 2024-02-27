@@ -76,7 +76,7 @@ export default function VideoSideBar() {
                 transition: "font-size 0.3s",
                 "&:hover": { fontSize: 38 }
               }}
-              style={{ color: "red" }}
+              style={{ color: "white" }}
             />
           ) : (
             <FavoriteBorderOutlinedIcon

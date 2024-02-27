@@ -9,6 +9,7 @@ import mediaRouter from "./routes/media.route.js";
 import locationRouter from "./routes/location.route.js";
 import landRouter from "./routes/land.route.js";
 import buildingRouter from "./routes/building.route.js";
+import ownerRouter from "./routes/owner.route.js";
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
 app.use("/api/media", mediaRouter);
+app.use("/api/owner", ownerRouter);
 app.use("/api/location", locationRouter);
 app.use("/api/land", landRouter);
 app.use("/api/building", buildingRouter);
